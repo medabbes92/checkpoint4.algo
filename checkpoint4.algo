@@ -1,0 +1,34 @@
+program IsPalindrome;
+
+function IsWordPalindrome(word: string): boolean;
+var
+  i: integer;
+
+  // Stop condition: an empty word or a word containing a single character is a palindrome
+  if Length(word) <= 1 then
+  
+    IsWordPalindrome := true;
+    exit;
+  
+
+  // Compare characters at the ends of the word
+  if word[1] = word[Length(word)] then
+    // Recursively test the rest of the word
+    IsWordPalindrome := IsWordPalindrome(Copy(word, 2, Length(word) - 2))
+  else
+    IsWordPalindrome := false;
+
+
+var
+  word: string;
+begin
+  // Read the word from the user
+  writeln('Enter a word: ');
+  readln(word);
+
+  // Check if the word is a palindrome
+  if IsWordPalindrome(word) then
+    writeln('The word "', word, '" is a palindrome.')
+  else
+    writeln('The word "', word, '" is not a palindrome.');
+end.
